@@ -1,0 +1,104 @@
+Software engineering project:
+BY-KESHAV GULATI
+ENTRY NUMBER-2020CSB1095
+
+
+Readme file for Project::
+
+
+Java part:
+
+
+In this project I have implemented an academic portal for IITROPAR with the help of java, postgres and gradle. Initially roles are assigned for student, instructor and admin where admin is type of an superuser which can do various tasks.
+
+The tasks performed by admin are:
+
+1. login/ogout- can login/logout from the window.
+2. add/delete batch- can add\delete some of the batch
+3. add/coursetocatalogue- can add\delete particular course to catalogue for a particular semester.
+4. to add/delete record- add or delete a particular record in database containing course_id,batch_id,course_type
+5. too add/delete user- can add or delete the user where the role of user is defined i.e whether instructor or student.
+6. add/delete/view course- can add/delete/view course
+7. start/end/view-can start the semester,end the semester and view the semester running.
+8. to view grades- grades submitted by instructor can be viewed for a course
+9. to submit/delete/view transcript- transcript can be submitted/deleted/viewed by admin.
+
+
+
+The tasks performed by instructor added by admin though adduser function are:
+
+1. login/logout-instructor can login/logout in the window.
+2. to view/update profile- instructor ca view or update his profile by giving the values.
+3. to view offered courses-courses that are in catalogue can be viewed by instructor
+4. to add/delete/view courses- to add/delete view your courses.
+5. to submit/view grades- to view/submit grades of students
+6. to view/approveordisapprove enrollment requests-can view and approve/disapprove enrollment requests of students.
+
+
+The tasks performed by students are:
+
+
+1. login/logout- can login/logout from the window.
+2. to view/update profile- student can view/update his profile by giving the corresponding values.
+3. to view offered courses- to view the courses offered by instructor.
+4. to add/delete/view courses- can add/delete and view your courses.
+5. to view grades- student can view his grades.
+6. to check cgpa- student can check their corresponing cgpa
+7. to check graduation- can check whether student is eligible for graduation or not.
+
+
+Database part:
+
+Academic_schema is the database prepared by me whihh has the following tables:
+1. batch
+2. catalogue
+3. course
+4. department
+5. grades
+6. student
+7. instructor
+8. record
+9. registration_status
+10. offering_criteria
+11. semester
+12. transcript
+13. prereq
+
+the attributes for following tables are:
+
+1. batch has id,year and dept_id
+2. catalogue has the course_id
+3. course has id, name,l,t,p,c,dept_id
+4. department has id,name
+5. grades has student_id,course_id,grade,semester,academic_year
+6. student has entry_number,name,email,batch_id,phone_no,password,token,credits
+7. instructor has id,name,email,dept_id,password,phone_no,token
+8. record has course_id,batch_id,course_type
+9. registration_status has course_id,student_id,instructor_id,status
+10. offering_criteria has course_id,cgpa_limit,instructor_id
+11. semester has academic_year,semester
+12. transcript has student_id,transcript
+13. prereq has course_id,prereq_id
+
+
+Note: Here the tables catalogue,offering_criteria,semester,registration_status are dynamic tables which are created when the admin starts the new semester.
+
+
+
+Junit part:
+
+for junit testing all the functions that are implemented for the particular roles are tested by trying to provide more and more coverage so three files named admintest,instructortest and studenttest are made to check for various tasks performed by the mentioned roles.
+
+
+ how the portal works:
+
+
+
+the admin will start the sem and add the users,batch,department and courses to corresponding database and then from the courses some of the courses will be added to catalogue from which instructor will pick up the courses that should be offered and from the courses offered student can enrol for the course by which the request to approve or disapprove will be sent to instructor. Instructor can then submit the grades of the students and admin can generate the transcripts for the students.Student can also check if he is graduating or not as if there is some course which is of core type and student has F grade it then student is not eligibe for graduation.
+So this is how our academic portal is working n=and giving us various functionlities.
+
+
+
+
+
+

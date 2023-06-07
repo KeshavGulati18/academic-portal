@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.studentTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-03-07T20:04:34" hostname="DESKTOP-HC5ETQ8" time="0.178">
+  <properties/>
+  <testcase name="myCourses()" classname="org.example.studentTest" time="0.004"/>
+  <testcase name="canAddcourse()" classname="org.example.studentTest" time="0.091"/>
+  <testcase name="getCgpa()" classname="org.example.studentTest" time="0.007"/>
+  <testcase name="gtt()" classname="org.example.studentTest" time="0.006"/>
+  <testcase name="login()" classname="org.example.studentTest" time="0.005"/>
+  <testcase name="gradesShow()" classname="org.example.studentTest" time="0.008"/>
+  <testcase name="profileView()" classname="org.example.studentTest" time="0.003"/>
+  <testcase name="checkGrad()" classname="org.example.studentTest" time="0.048"/>
+  <testcase name="courseDelete()" classname="org.example.studentTest" time="0.003"/>
+  <system-out><![CDATA[Database opened!
+logged in successfully
+org.postgresql.util.PSQLException: ERROR: relation "registration_status" does not exist
+  Position: 15
+inserted successfully
+logged in successfully
+Course added successfully!
+Course added successfully!
+org.postgresql.util.PSQLException: ERROR: update or delete on table "catalogue" violates foreign key constraint "offering_criteria_course_id_fkey" on table "offering_criteria"
+  Detail: Key (course_id)=(CS304) is still referenced from table "offering_criteria".
+unable to delete
+2020-winter ended successfully
+logged in successfully
+student_id-->11111111111    name-->me    batch_id-->2020csb    email-->a@b                         phone_no-->8607067771    credits-->6
+
+Record inserted successfully!
+CS304    
+Successfully logged out!!
+2020-monsoon ended successfully
+This course is not offered by you!
+student_id-->11111111111    name-->me    batch_id-->2020csb    email-->a@b                         phone_no-->8607067771    credits-->6
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

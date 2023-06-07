@@ -1,0 +1,767 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/416)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.sql.Statement;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;
+<b class="nc">&nbsp;    static Connection conn = connect_asap.ConnectDB();</b>
+<b class="nc">&nbsp;    static Statement stmt = null;</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Welcome to aims portal of IIT ROPAR&quot;);</b>
+<b class="nc">&nbsp;            Scanner input = new Scanner(System.in);</b>
+<b class="nc">&nbsp;            String str = &quot;&quot;;</b>
+<b class="nc">&nbsp;            int x = 0;</b>
+<b class="nc">&nbsp;            int y = 0;</b>
+<b class="nc">&nbsp;            admin a = new admin();</b>
+<b class="nc">&nbsp;            student s = new student();</b>
+<b class="nc">&nbsp;            instructor i = new instructor();</b>
+<b class="nc">&nbsp;            String query = &quot;select * from instructor where token=&#39;Logged in!!&#39;;&quot;;</b>
+&nbsp;
+&nbsp;            try {
+<b class="nc">&nbsp;                stmt = conn.createStatement();</b>
+<b class="nc">&nbsp;                ResultSet rs = stmt.executeQuery(query);</b>
+<b class="nc">&nbsp;                while (rs.next()) {</b>
+<b class="nc">&nbsp;                    i.exist = true;</b>
+<b class="nc">&nbsp;                    i.instructor_id = rs.getString(&quot;id&quot;);</b>
+<b class="nc">&nbsp;                    y++;</b>
+<b class="nc">&nbsp;                    str = &quot;1&quot;;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } catch (SQLException e) {</b>
+<b class="nc">&nbsp;                throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            if (y == 0) {</b>
+<b class="nc">&nbsp;                query = &quot;select * from student where token=&#39;Logged in!!&#39;;&quot;;</b>
+&nbsp;                try {
+<b class="nc">&nbsp;                    stmt = conn.createStatement();</b>
+<b class="nc">&nbsp;                    ResultSet rs = stmt.executeQuery(query);</b>
+<b class="nc">&nbsp;                    while (rs.next()) {</b>
+<b class="nc">&nbsp;                        s.exist = true;</b>
+<b class="nc">&nbsp;                        s.student_id = rs.getString(&quot;student_id&quot;);</b>
+<b class="nc">&nbsp;                        s.batch_id = rs.getString(&quot;batch_id&quot;);</b>
+<b class="nc">&nbsp;                        s.credits = rs.getInt(&quot;credits&quot;);</b>
+<b class="nc">&nbsp;                        x++;</b>
+<b class="nc">&nbsp;                        str = &quot;2&quot;;</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                } catch (SQLException e) {</b>
+<b class="nc">&nbsp;                    throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            if (x == 0 &amp;&amp; y == 0) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter your role&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;0. to exit &quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;1. instructor&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;2. student&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;3. admin&quot;);</b>
+<b class="nc">&nbsp;                str = input.nextLine();</b>
+<b class="nc">&nbsp;                if (str.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+&nbsp;//--------------------------------------------------------------------------------------------------------------------
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            switch (str) {</b>
+&nbsp;
+&nbsp;                case &quot;1&quot;:{
+<b class="nc">&nbsp;                    if (y == 0) {</b>
+&nbsp;                        while (true) {
+<b class="nc">&nbsp;                            String email = &quot;&quot;, password = &quot;&quot;;</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Enter your email&quot;);</b>
+<b class="nc">&nbsp;                            email = input.nextLine();</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Enter your password&quot;);</b>
+<b class="nc">&nbsp;                            password = input.nextLine();</b>
+<b class="nc">&nbsp;                            if (i.login(email, password)) break;</b>
+&nbsp;                            else {
+<b class="nc">&nbsp;                                System.out.println(&quot;Wrong username or password!!&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+&nbsp;                            }
+&nbsp;
+<b class="nc">&nbsp;                        }</b>
+&nbsp;
+&nbsp;                    }
+<b class="nc">&nbsp;                    while (i.exist) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Press \n0. to logout \n1. to view profile\n2. to update profile\n3. to add course\n4. to view offered courses\n5. to view your courses\n6. to delete Course\n7. to view grades\n8. to view enrollment requests\n9. to approve or disapprove enrollment requests\n10. to submit grades  &quot;);</b>
+<b class="nc">&nbsp;                        String t = &quot;&quot;;</b>
+<b class="nc">&nbsp;                        t = input.nextLine();</b>
+<b class="nc">&nbsp;                        switch (t) {</b>
+&nbsp;                            case &quot;0&quot;:
+<b class="nc">&nbsp;                                i.logout();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            case &quot;1&quot;: {
+<b class="nc">&nbsp;                                String temp = i.profileView();</b>
+<b class="nc">&nbsp;                                System.out.println(temp);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;2&quot;: {
+<b class="nc">&nbsp;                                String name = &quot;&quot;, password = &quot;&quot;, phone_no = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter name to update&quot;);</b>
+<b class="nc">&nbsp;                                name = input.nextLine();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter phone number to update&quot;);</b>
+<b class="nc">&nbsp;                                phone_no = input.nextLine();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter password to update&quot;);</b>
+<b class="nc">&nbsp;                                password = input.nextLine();</b>
+<b class="nc">&nbsp;                                i.profileUpdate(name, password, phone_no);</b>
+&nbsp;//                                    System.out.println(&quot;Successfully updated the profile!!&quot;);
+&nbsp;//                                else System.out.println(&quot;Error!!&quot;);
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;3&quot;: {
+&nbsp;                                while (true) {
+&nbsp;                                    String course_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the course_id or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+&nbsp;                                    int cgpa_limit;
+<b class="nc">&nbsp;                                    System.out.println(&quot;set the cgpa limit for this course&quot;);</b>
+<b class="nc">&nbsp;                                    cgpa_limit = Integer.parseInt(input.nextLine());</b>
+<b class="nc">&nbsp;                                    i.courseAdd(course_id, cgpa_limit);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;4&quot;:
+<b class="nc">&nbsp;                                i.coursesOffered();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            case &quot;5&quot;: {
+<b class="nc">&nbsp;                                String rec = i.myCourses();</b>
+<b class="nc">&nbsp;                                System.out.println(rec);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;6&quot;:
+&nbsp;                                while (true) {
+&nbsp;                                    String course_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id to delete or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    i.courseDelete(course_id);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            case &quot;7&quot;: {
+<b class="nc">&nbsp;                                i.gradesShow();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;8&quot;: {
+<b class="nc">&nbsp;                                String temp = i.enrollmentRequests();</b>
+<b class="nc">&nbsp;                                System.out.println(temp);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;9&quot;: {
+&nbsp;                                while (true) {
+&nbsp;                                    String course_id, student_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter Student_id &quot;);</b>
+<b class="nc">&nbsp;                                    student_id = input.nextLine();</b>
+&nbsp;                                    String temp;
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 1 to approve the registration request and 2 to disapprove the registration request&quot;);</b>
+<b class="nc">&nbsp;                                    temp = input.nextLine();</b>
+<b class="nc">&nbsp;                                    i.AorD(course_id, student_id, temp);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;10&quot;: {
+<b class="nc">&nbsp;                                i.gradesSubmit();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+&nbsp;                            }
+&nbsp;                            default:
+<b class="nc">&nbsp;                                System.out.println(&quot;Follow the given instructions!!&quot;);</b>
+&nbsp;                                break;
+&nbsp;                        }
+<b class="nc">&nbsp;                    }</b>
+&nbsp;
+&nbsp;                    break;
+&nbsp;
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;//            -------------------------------------------------------------------------------------------------------------
+&nbsp;                case &quot;2&quot;:{
+&nbsp;
+<b class="nc">&nbsp;                    if (x == 0) {</b>
+<b class="nc">&nbsp;                        String email = &quot;&quot;, password = &quot;&quot;;</b>
+&nbsp;                        while (true) {
+<b class="nc">&nbsp;                            System.out.println(&quot;Enter your email&quot;);</b>
+<b class="nc">&nbsp;                            email = input.nextLine();</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Enter your password&quot;);</b>
+<b class="nc">&nbsp;                            password = input.nextLine();</b>
+<b class="nc">&nbsp;                            if (s.login(email, password)) break;</b>
+&nbsp;                            else {
+<b class="nc">&nbsp;                                System.out.println(&quot;Wrong username or password!!&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+&nbsp;                            }
+&nbsp;
+&nbsp;                        }
+&nbsp;                    }
+<b class="nc">&nbsp;                    while (s.exist) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Press \n0. to logout \n1. to view profile\n2. to update profile\n3. to add courses\n4. to view the offered courses\n5. to view your courses\n6. to delete Course\n7. to view grades\n8. to view your cgpa\n9. to check graduation  &quot;);</b>
+<b class="nc">&nbsp;                        String t = &quot;&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;                        t = input.nextLine();</b>
+<b class="nc">&nbsp;                        switch (t) {</b>
+&nbsp;                            case &quot;0&quot;:
+<b class="nc">&nbsp;                                s.logout();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            case &quot;1&quot;: {
+<b class="nc">&nbsp;                                s.profileView();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;2&quot;: {
+<b class="nc">&nbsp;                                String name = &quot;&quot;, password = &quot;&quot;, phone_no;</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter name to update&quot;);</b>
+<b class="nc">&nbsp;                                name = input.nextLine();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter phone number to update&quot;);</b>
+<b class="nc">&nbsp;                                phone_no = input.nextLine();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter password to update&quot;);</b>
+<b class="nc">&nbsp;                                password = input.nextLine();</b>
+<b class="nc">&nbsp;                                s.profileUpdate(name, password, phone_no);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;3&quot;: {
+&nbsp;
+&nbsp;                                while (true) {
+&nbsp;                                    String course_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;enter the course_id or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    s.courseAdd(course_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                    input.nextLine();</b>
+&nbsp;
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;4&quot;:
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String temp = s.coursesOffered();</b>
+<b class="nc">&nbsp;                                    System.out.println(temp);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                    input.nextLine();</b>
+<b class="nc">&nbsp;                                    break;</b>
+&nbsp;                                }
+&nbsp;                            case &quot;5&quot;: {
+<b class="nc">&nbsp;                                String temp=s.myCourses();</b>
+<b class="nc">&nbsp;                                System.out.println(temp);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;6&quot;:{
+&nbsp;                                while (true) {
+&nbsp;                                    String course_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id to delete or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    s.courseDelete(course_id);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;}
+&nbsp;                            case &quot;7&quot;: {
+<b class="nc">&nbsp;                                String temp=s.gradesShow();</b>
+<b class="nc">&nbsp;                                System.out.println(temp);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;8&quot;: {
+<b class="nc">&nbsp;                                double temp = s.getCgpa();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Your cgpa is &quot; +temp);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;9&quot;: {
+<b class="nc">&nbsp;                                if (s.checkGrad())</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Congratulations,you don&#39;t have any backlogs!!&quot;);</b>
+&nbsp;                                else
+<b class="nc">&nbsp;                                    System.out.println(&quot;Sorry, you cannot graduate you have backlogs in core courses!!&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            default:
+<b class="nc">&nbsp;                                System.out.println(&quot;Follow the given instructions&quot;);</b>
+&nbsp;                                break;
+&nbsp;                        }
+<b class="nc">&nbsp;                    }</b>
+&nbsp;
+&nbsp;                    break;
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;//            --------------------------------------------------------------------------------------------------
+&nbsp;
+&nbsp;                case &quot;3&quot;:
+&nbsp;                    while (true) {
+<b class="nc">&nbsp;                        String username = &quot;&quot;;</b>
+<b class="nc">&nbsp;                        String password = &quot;&quot;;</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Enter the username&quot;);</b>
+<b class="nc">&nbsp;                        username = input.nextLine();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Enter the password&quot;);</b>
+<b class="nc">&nbsp;                        password = input.nextLine();</b>
+<b class="nc">&nbsp;                        boolean f = a.login(username, password);</b>
+<b class="nc">&nbsp;                        if (f)</b>
+<b class="nc">&nbsp;                            break;</b>
+&nbsp;                        else
+<b class="nc">&nbsp;                            System.out.println(&quot;Wrong username or password!!!&quot;);</b>
+<b class="nc">&nbsp;                    }</b>
+&nbsp;
+<b class="nc">&nbsp;                    int flag = 1;//</b>
+<b class="nc">&nbsp;                    while (a.exist) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Press \n0. to logout \n1. to add a new batch \n2. delete a batch\n3. to add a new course \n4. delete the course \n5. to add record\n6. to delete record \n7. to view grades\n8. to add users\n9. to delete user\n10. to add course to catalogue\n11. to start sem\n12. to end sem\n13. to delete from catalogue\n14. to view users\n15. to view courses\n16. to view semester\n17. to submit transcript\n18. to view transcript\n19. to delete transcript &quot;);</b>
+<b class="nc">&nbsp;                        String t = &quot;&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;                        t = input.nextLine();</b>
+<b class="nc">&nbsp;                        switch (t) {</b>
+&nbsp;                            case &quot;0&quot;:
+<b class="nc">&nbsp;                                a.exist = false;</b>
+<b class="nc">&nbsp;                                a.logout();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            case &quot;1&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String batch_id = &quot;&quot;, year = &quot;&quot;, dept_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the batch id&quot;);</b>
+<b class="nc">&nbsp;                                    batch_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the  year&quot;);</b>
+<b class="nc">&nbsp;                                    year = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the  dept_id&quot;);</b>
+<b class="nc">&nbsp;                                    dept_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.batchAdd(batch_id, year, dept_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;
+&nbsp;                            case &quot;2&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String batch_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter batch_id&quot;);</b>
+<b class="nc">&nbsp;                                    batch_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.batchDelete(batch_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;
+&nbsp;                                break;
+&nbsp;
+&nbsp;                            }
+&nbsp;
+&nbsp;
+&nbsp;                            case &quot;3&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String course_id = &quot;&quot;, course_name = &quot;&quot;, dept_id = &quot;&quot;;</b>
+&nbsp;                                    int l, tut, p, c;
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the course id&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the course name&quot;);</b>
+<b class="nc">&nbsp;                                    course_name = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter lectures per week&quot;);</b>
+<b class="nc">&nbsp;                                    l = Integer.parseInt(input.nextLine());</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter tutorials per week&quot;);</b>
+<b class="nc">&nbsp;                                    tut = Integer.parseInt(input.nextLine());</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course practicals per week&quot;);</b>
+<b class="nc">&nbsp;                                    p = Integer.parseInt(input.nextLine());</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course credits&quot;);</b>
+<b class="nc">&nbsp;                                    c = Integer.parseInt(input.nextLine());</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter dept_id&quot;);</b>
+<b class="nc">&nbsp;                                    dept_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    List&lt;String&gt; prereq = new ArrayList&lt;String&gt;();</b>
+&nbsp;                                    while (true) {
+&nbsp;                                        String pr;
+<b class="nc">&nbsp;                                        System.out.println(&quot;Enter the prerequisite course code  of the course &quot; + course_id + &quot; or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                        pr = input.nextLine();</b>
+<b class="nc">&nbsp;                                        if (pr.equals(&quot;0&quot;)) break;</b>
+<b class="nc">&nbsp;                                        prereq.add(pr);</b>
+<b class="nc">&nbsp;                                    }</b>
+<b class="nc">&nbsp;                                    a.courseAdd(course_id, course_name, l, tut, p, c, dept_id, prereq);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;
+&nbsp;                            }
+&nbsp;                            case &quot;4&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String course_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.courseDelete(course_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;
+&nbsp;                            case &quot;5&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String course_id = &quot;&quot;, course_type, batch_id;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the course id or enter 0 to quit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the batch_id &quot;);</b>
+<b class="nc">&nbsp;                                    batch_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter the course type&quot;);</b>
+<b class="nc">&nbsp;                                    course_type = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.recordAdd(course_id, course_type, batch_id);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;
+&nbsp;                            }
+&nbsp;                            case &quot;6&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String course_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    String course_type = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    String batch_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter batch_id&quot;);</b>
+<b class="nc">&nbsp;                                    batch_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.recordDelete(course_id, batch_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;7&quot;: {
+&nbsp;                                while (true) {
+&nbsp;                                    String student_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;enter student_id or 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    student_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (student_id.equals(&quot;0&quot;)) break;</b>
+<b class="nc">&nbsp;                                    a.gradesShow(student_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                    input.nextLine();</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;
+&nbsp;                            case &quot;8&quot;:
+<b class="nc">&nbsp;                                int j = 0;</b>
+<b class="nc">&nbsp;                                while (j == 0) {</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press \n0 to exit\n1 to add instructor\n2 to add student&quot;);</b>
+<b class="nc">&nbsp;                                    String role = input.nextLine();</b>
+<b class="nc">&nbsp;                                    List&lt;String&gt; val = new ArrayList&lt;String&gt;();</b>
+<b class="nc">&nbsp;                                    switch (role) {</b>
+&nbsp;                                        case &quot;0&quot;:{
+<b class="nc">&nbsp;                                            j = 1;</b>
+<b class="nc">&nbsp;                                            break;}</b>
+&nbsp;                                        case &quot;1&quot;: {
+<b class="nc">&nbsp;                                            String instructor_name = &quot;&quot;, dept_id = &quot;&quot;, phone_number = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter name of the instructor&quot;);</b>
+<b class="nc">&nbsp;                                            instructor_name = input.nextLine();</b>
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter dept_id of the instructor&quot;);</b>
+<b class="nc">&nbsp;                                            dept_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter phone number of the instructor&quot;);</b>
+<b class="nc">&nbsp;                                            phone_number = input.nextLine();</b>
+<b class="nc">&nbsp;                                            val.add(instructor_name);</b>
+<b class="nc">&nbsp;                                            val.add(dept_id);</b>
+<b class="nc">&nbsp;                                            val.add(phone_number);</b>
+<b class="nc">&nbsp;                                            a.userAdd(&quot;1&quot;, val);</b>
+<b class="nc">&nbsp;                                       break;</b>
+&nbsp;                                        }
+&nbsp;
+&nbsp;                                        case &quot;2&quot;: {
+<b class="nc">&nbsp;                                            String student_name = &quot;&quot;, batch_id = &quot;&quot;, phone_number = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter name of the student&quot;);</b>
+<b class="nc">&nbsp;                                            student_name = input.nextLine();</b>
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter batch_id of the student&quot;);</b>
+<b class="nc">&nbsp;                                            batch_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter phone number of the student&quot;);</b>
+<b class="nc">&nbsp;                                            phone_number = input.nextLine();</b>
+<b class="nc">&nbsp;                                            val.add(student_name);</b>
+<b class="nc">&nbsp;                                            val.add(batch_id);</b>
+<b class="nc">&nbsp;                                            val.add(phone_number);</b>
+<b class="nc">&nbsp;                                            a.userAdd(&quot;2&quot;, val);</b>
+<b class="nc">&nbsp;                                            break;</b>
+&nbsp;                                        }
+&nbsp;                                        default:
+<b class="nc">&nbsp;                                            System.out.println(&quot;Enter the valid role&quot;);</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;
+&nbsp;                            case &quot;9&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String role = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    String id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter 1 for instructor and 2 for student to delete&quot;);</b>
+<b class="nc">&nbsp;                                    role = input.nextLine();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter id&quot;);</b>
+<b class="nc">&nbsp;                                    id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.userDelete(role,id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;10&quot;: {
+&nbsp;                                while (true) {
+&nbsp;                                    String course_id;
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course code or enter 0 to exit&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    if (course_id.equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                    a.catalogueAdd(course_id);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;11&quot;: {
+&nbsp;                                String academic_year, semester;
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter the academic year&quot;);</b>
+<b class="nc">&nbsp;                                academic_year = input.nextLine();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter the semester monsoon/winter&quot;);</b>
+<b class="nc">&nbsp;                                semester = input.nextLine();</b>
+<b class="nc">&nbsp;                                String temp = a.semStart(academic_year, semester);</b>
+<b class="nc">&nbsp;                                System.out.println(temp);</b>
+<b class="nc">&nbsp;                                if (!temp.equals(&quot;a sem is already running&quot;)) {</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Add course to catalogue for this semester&quot;);</b>
+&nbsp;                                }
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;
+&nbsp;                            }
+&nbsp;
+&nbsp;                            case &quot;12&quot;: {
+<b class="nc">&nbsp;                                a.semEnd();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;
+&nbsp;                            case &quot;13&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String course_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id&quot;);</b>
+<b class="nc">&nbsp;                                    course_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.catalogueDelete(course_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                            case &quot;14&quot;: {
+<b class="nc">&nbsp;                                String role = &quot;0&quot;;</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;enter 1 for instructor and 2 for student&quot;);</b>
+<b class="nc">&nbsp;                                role = input.nextLine();</b>
+<b class="nc">&nbsp;                                a.usersView(role);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;15&quot;: {
+<b class="nc">&nbsp;                                a.coursesView();</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            case &quot;16&quot;: {
+<b class="nc">&nbsp;                                String rec=a.semView();</b>
+<b class="nc">&nbsp;                                System.out.println(rec);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;press any key to continue&quot;);</b>
+<b class="nc">&nbsp;                                input.nextLine();</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;
+&nbsp;                            case &quot;17&quot;: {
+<b class="nc">&nbsp;                                String student_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter the student_id to submit its transcript&quot;);</b>
+<b class="nc">&nbsp;                                student_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                a.transcriptSubmit(student_id);</b>
+&nbsp;                            }
+<b class="nc">&nbsp;                            break;</b>
+&nbsp;                            case &quot;18&quot;:{
+<b class="nc">&nbsp;                                String student_id = &quot;&quot;;</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Enter student id&quot;);</b>
+<b class="nc">&nbsp;                                student_id = input.nextLine();</b>
+<b class="nc">&nbsp;                                a.transcriptView(student_id);</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                        }
+&nbsp;                            case &quot;20&quot;: {
+&nbsp;                                while (true) {
+<b class="nc">&nbsp;                                    String student_id=&quot;&quot;;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Enter course_id&quot;);</b>
+<b class="nc">&nbsp;                                    student_id=input.nextLine();</b>
+<b class="nc">&nbsp;                                    a.transcriptDelete(student_id);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;press 0 for exit and 1 to continue&quot;);</b>
+<b class="nc">&nbsp;                                    if (input.nextLine().equals(&quot;0&quot;)) {</b>
+<b class="nc">&nbsp;                                        break;</b>
+&nbsp;                                    }
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                        }
+<b class="nc">&nbsp;                    }</b>
+&nbsp;
+&nbsp;                    break;
+&nbsp;                default:
+<b class="nc">&nbsp;                    System.out.println(&quot;Oops, you entered invalid role!!&quot;);</b>
+&nbsp;                    break;
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-08 01:35</div>
+</div>
+</body>
+</html>

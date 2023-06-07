@@ -1,0 +1,132 @@
+-- ENTITIES
+
+create table department(
+    id varchar(10),
+    name varchar(30),
+
+    primary key (id)
+);
+
+create table batch(
+    id varchar(10),
+    year int,
+    dept_id varchar(10),
+
+    primary key (id),
+    foreign key (dept_id) references department(id)
+);
+
+create table course(
+    id  varchar(15),
+    name varchar(30),
+    l int,
+    t int,
+    p int,
+    c int,
+    dept_id varchar(10),
+
+    primary key (id),
+    foreign key (dept_id) references department(id)
+);
+
+create table student(
+    entry_number varchar(11),
+    name varchar(100),
+    email char(24),
+    batch_id varchar(10),
+    password varchar(100),
+    phone_no varchar(15),
+    token text,
+    credits int,
+    primary key(entry_number),
+    foreign key (batch_id) references batch(id)
+);
+
+create table instructor(
+    id char(11),
+    name varchar(100),
+    email varchar(50),
+    dept_id varchar(10),
+    password varchar(100),
+    phone_no varchar(15),
+    token text,
+
+    primary key (id),
+    foreign key (dept_id) references department(id)
+);
+
+create table record(
+    course_id varchar(15),
+    batch_id varchar(10),
+    course_type varchar(100),
+
+    foreign key (course_id) references course(id)
+);
+
+CREATE TABLE transcript(
+student_id VARCHAR(15),
+transcript bytea,
+FOREIGN KEY (student_id) references student (entry_number)
+);
+
+
+
+
+create table prereq(
+    course_id char(5),
+    prereq_id char(5),
+
+    primary key (course_id, prereq_id),
+    foreign key (course_id) references course(id),
+    foreign key (prereq_id) references course(id)
+);
+
+
+CREATE TABLE grades(
+student_id varchar(11),
+course_id char(5),
+grade VARCHAR(5),
+semester VARCHAR(100),
+academic_year VARCHAR(100),
+foreign key (student_id) references student (entry_number),
+foreign key (course_id) references course (id)
+);
+
+
+
+Dynamically created tables
+--------------------------------------------------------------------
+
+CREATE TABLE semester(
+academic_year VARCHAR(10),
+semester VARCHAR(10)
+);
+
+
+create table catalogue(
+    course_id varchar(5),
+    primary key (course_id),
+    foreign key (course_id) references course(id)
+);
+
+
+
+
+CREATE TABLE offering_criteria(
+course_id varchar(5),
+cgpa_limit INTEGER,
+instructor_id char(11),
+PRIMARY KEY(course_id),
+FOREIGN KEY (course_id) references catalogue (course_id),
+FOREIGN KEY (instructor_id) references instructor (id)
+);
+
+CREATE TABLE registration_status(
+course_id varchar(5),
+student_id char(11),
+instructor_id char(11),
+status VARCHAR(10),
+FOREIGN KEY (course_id) references course (id),
+FOREIGN KEY (student_id) references student (entry_number),
+FOREIGN KEY (instructor_id) references instructor (id)
+);

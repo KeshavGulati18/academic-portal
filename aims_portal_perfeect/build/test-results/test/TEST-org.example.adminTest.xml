@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.adminTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2023-03-07T20:04:33" hostname="DESKTOP-HC5ETQ8" time="0.364">
+  <properties/>
+  <testcase name="catalogueDelete()" classname="org.example.adminTest" time="0.154"/>
+  <testcase name="batchAdd()" classname="org.example.adminTest" time="0.011"/>
+  <testcase name="catalogueAdd()" classname="org.example.adminTest" time="0.037"/>
+  <testcase name="logout()" classname="org.example.adminTest" time="0.003"/>
+  <testcase name="semEnd()" classname="org.example.adminTest" time="0.002"/>
+  <testcase name="transcriptDelete()" classname="org.example.adminTest" time="0.016"/>
+  <testcase name="batchDelete()" classname="org.example.adminTest" time="0.003"/>
+  <testcase name="transcriptSubmit()" classname="org.example.adminTest" time="0.004"/>
+  <testcase name="userAdd()" classname="org.example.adminTest" time="0.024"/>
+  <testcase name="coursesView()" classname="org.example.adminTest" time="0.007"/>
+  <testcase name="login()" classname="org.example.adminTest" time="0.002"/>
+  <testcase name="gradesShow()" classname="org.example.adminTest" time="0.002"/>
+  <testcase name="semesterView()" classname="org.example.adminTest" time="0.017"/>
+  <testcase name="usersView()" classname="org.example.adminTest" time="0.012"/>
+  <testcase name="addcourse()" classname="org.example.adminTest" time="0.02"/>
+  <testcase name="courseDelete()" classname="org.example.adminTest" time="0.003"/>
+  <testcase name="recordAdd()" classname="org.example.adminTest" time="0.004"/>
+  <testcase name="transcriptView()" classname="org.example.adminTest" time="0.002"/>
+  <testcase name="userDelete()" classname="org.example.adminTest" time="0.012"/>
+  <testcase name="semStart()" classname="org.example.adminTest" time="0.003"/>
+  <testcase name="recordDelete()" classname="org.example.adminTest" time="0.004"/>
+  <system-out><![CDATA[Database opened!
+Successfully logged in!!
+org.postgresql.util.PSQLException: ERROR: insert or update on table "catalogue" violates foreign key constraint "catalogue_course_id_fkey"
+  Detail: Key (course_id)=(CS301) is not present in table "course".
+unable to insert
+deleted from catalogue
+2023-monsoon ended successfully
+Successfully Inserted
+Batch deleted successfully
+inserted successfully
+deleted from catalogue
+2024-monsoon ended successfully
+Successfully logged out!!
+No semester is currently running
+transcript deleted successfully
+Successfully Inserted
+Batch deleted successfully
+transcript deleted successfully
+User added!
+User added
+User added!
+deleted successfully
+User added
+deleted successfully
+course_id-->CS304    name-->core    l-->3    t-->3    p-->3    dept_id-->CS
+course_id-->CS307    name-->core    l-->3    t-->3    p-->3    dept_id-->CS
+course_id-->CS306    name-->softe    l-->3    t-->3    p-->3    dept_id-->CS
+Successfully logged in!!
+id-->CS0            name-->def    email-->CS0@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->123            name-->xy    email-->k@g    dept_id-->CS    phone_number-->8607067772
+id-->CS1            name-->def    email-->CS1@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS10           name-->def    email-->CS10@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS2            name-->def    email-->CS2@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS3            name-->def    email-->CS3@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS4            name-->def    email-->CS4@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS5            name-->def    email-->CS5@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS6            name-->def    email-->CS6@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->CS9            name-->def    email-->CS9@iitrpr.ac.in    dept_id-->CS    phone_number-->9812498128
+id-->1234           name-->xyz    email-->s@s    dept_id-->CS    phone_number-->8607067772
+student_id-->2020csb0    name-->abc    batch_id-->2020csb    email-->2020csb0@iitrpr.ac.in       phone_no-->911
+student_id-->2020csb1    name-->abc    batch_id-->2020csb    email-->2020csb1@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb2    name-->abc    batch_id-->2020csb    email-->2020csb2@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb3    name-->abc    batch_id-->2020csb    email-->2020csb3@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb4    name-->abc    batch_id-->2020csb    email-->2020csb4@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb5    name-->abc    batch_id-->2020csb    email-->2020csb5@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb6    name-->abc    batch_id-->2020csb    email-->2020csb6@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb7    name-->abc    batch_id-->2020csb    email-->2020csb7@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb8    name-->abc    batch_id-->2020csb    email-->2020csb8@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb9    name-->abc    batch_id-->2020csb    email-->2020csb9@iitrpr.ac.in       phone_no-->8607067771
+student_id-->2020csb10    name-->abc    batch_id-->2020csb    email-->2020csb10@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb11    name-->abc    batch_id-->2020csb    email-->2020csb11@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb12    name-->abc    batch_id-->2020csb    email-->2020csb12@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb13    name-->abc    batch_id-->2020csb    email-->2020csb13@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb14    name-->abc    batch_id-->2020csb    email-->2020csb14@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb15    name-->abc    batch_id-->2020csb    email-->2020csb15@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb16    name-->abc    batch_id-->2020csb    email-->2020csb16@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb17    name-->abc    batch_id-->2020csb    email-->2020csb17@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb18    name-->abc    batch_id-->2020csb    email-->2020csb18@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb19    name-->abc    batch_id-->2020csb    email-->2020csb19@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb20    name-->abc    batch_id-->2020csb    email-->2020csb20@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb21    name-->abc    batch_id-->2020csb    email-->2020csb21@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb23    name-->abc    batch_id-->2020csb    email-->2020csb23@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb24    name-->abc    batch_id-->2020csb    email-->2020csb24@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb25    name-->abc    batch_id-->2020csb    email-->2020csb25@iitrpr.ac.in      phone_no-->8607067771
+student_id-->11111111111    name-->me    batch_id-->2020csb    email-->a@b                         phone_no-->8607067771
+student_id-->2020csb26    name-->abc    batch_id-->2020csb    email-->2020csb26@iitrpr.ac.in      phone_no-->8607067771
+student_id-->2020csb27    name-->abc    batch_id-->2020csb    email-->2020csb27@iitrpr.ac.in      phone_no-->8607067771
+Course added successfully
+Course added successfully
+Course deleted successfully!!
+Course deleted successfully!!
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pkey"
+  Detail: Key (id)=(CS306) already exists.
+Unable to add course
+Course deleted successfully!!
+Record inserted successfully!
+Record deleted successfully
+
+User added!
+User added
+deleted successfully
+deleted successfully
+org.postgresql.util.PSQLException: ERROR: insert or update on table "record" violates foreign key constraint "record_course_id_fkey"
+  Detail: Key (course_id)=(EE111) is not present in table "course".
+Record insertion failed
+Record deleted successfully
+Successfully logged out!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

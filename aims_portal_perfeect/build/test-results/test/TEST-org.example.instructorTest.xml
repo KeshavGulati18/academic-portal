@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.instructorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-03-07T20:04:33" hostname="DESKTOP-HC5ETQ8" time="0.5">
+  <properties/>
+  <testcase name="coursesOffered()" classname="org.example.instructorTest" time="0.069"/>
+  <testcase name="enrollmentRequests()" classname="org.example.instructorTest" time="0.136"/>
+  <testcase name="myCourses()" classname="org.example.instructorTest" time="0.059"/>
+  <testcase name="AorD()" classname="org.example.instructorTest" time="0.077"/>
+  <testcase name="login()" classname="org.example.instructorTest" time="0.005"/>
+  <testcase name="gradesShow()" classname="org.example.instructorTest" time="0.002"/>
+  <testcase name="profileView()" classname="org.example.instructorTest" time="0.002"/>
+  <testcase name="gradesSubmit()" classname="org.example.instructorTest" time="0.043"/>
+  <testcase name="courseDelete()" classname="org.example.instructorTest" time="0.052"/>
+  <testcase name="courseAdd()" classname="org.example.instructorTest" time="0.045"/>
+  <system-out><![CDATA[Database opened!
+logged in successfully
+2023-monsoon ended successfully
+inserted successfully
+Course_id
+CS304
+deleted from catalogue
+2024-winter ended successfully
+org.postgresql.util.PSQLException: ERROR: relation "registration_status" does not exist
+  Position: 15
+inserted successfully
+Course added successfully!
+Database opened!
+logged in successfully
+Course deleted successfully
+deleted from catalogue
+2024-monsoon ended successfully
+No semester is currently running
+inserted successfully
+Course added successfully!
+org.postgresql.util.PSQLException: ERROR: update or delete on table "catalogue" violates foreign key constraint "offering_criteria_course_id_fkey" on table "offering_criteria"
+  Detail: Key (course_id)=(CS304) is still referenced from table "offering_criteria".
+unable to delete
+2025-monsoon ended successfully
+org.postgresql.util.PSQLException: ERROR: relation "registration_status" does not exist
+  Position: 8
+org.postgresql.util.PSQLException: ERROR: relation "registration_status" does not exist
+  Position: 8
+inserted successfully
+Course added successfully!
+logged in successfully
+Course added successfully!
+Updated successfully
+Updated successfully
+org.postgresql.util.PSQLException: ERROR: column "id" does not exist
+  Position: 45
+Course deleted successfully
+deleted from catalogue
+2025-monsoon ended successfully
+logged in successfully
+grades submitted successfully
+org.postgresql.util.PSQLException: ERROR: relation "registration_status" does not exist
+  Position: 15
+grades submitted successfully
+2020-winter ended successfully
+No such course is offered by you!
+inserted successfully
+Course added successfully!
+Course deleted successfully
+deleted from catalogue
+2024-monsoon ended successfully
+Course not available
+inserted successfully
+Course added successfully!
+2023-monsoon ended successfully
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
